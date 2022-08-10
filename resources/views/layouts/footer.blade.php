@@ -10,9 +10,10 @@
             color: #302360
         }
         .my-footer{
-            padding-top: 45em;
+            padding-top: 70em;
             font-size: small;
             text-align: center;
+            vertical-align: bottom;
         }
     </style>
 </head>

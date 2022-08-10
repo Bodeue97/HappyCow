@@ -25,23 +25,14 @@
             height: 10%;
         }
         .header-list{
+            text-align: center;
             padding-top: 0.7em;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
             list-style-type: none
 
         }
-        .logo-container {
-            position: relative;
-        }
-        .logo {
-            position: absolute;
-            top: -2.2em;
-            right: -4em;
-            height: 3.7em;
-            width: 13em;
-            scale: 60%;
-        }
+
 
 
     </style>
@@ -57,18 +48,19 @@
                 <a href="/" class="{{request()->is('/about') ? 'active' : ''}}">About</a>
             </li>
             <li>
-                <a href="/" class="{{request()->is('/browse') ? 'active' : ''}}">Browse</a>
+                <a href="/browse" class="{{request()->is('/browse', 'browse/*') ? 'active' : ''}}">Browse</a>
             </li>
             <li>
                 <a href="/" class="{{request()->is('/login') ? 'active' : ''}}">Log in</a>
+            </li>
+            <li>
+                <a href="/" class="{{request()->is('/register') ? 'active' : ''}}">Register</a>
             </li>
 
         </ul>
 
     </div>
-    <div class="logo-container">
-        <img class="logo" src="/jpg/logo.jpg">
-    </div>
+
 
 </header>
 </body>
