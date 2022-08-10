@@ -18,13 +18,14 @@
             background-size: cover;
         }
 
-        .header-menu{
+        .header-menu {
             background: white;
             text-align: center;
             margin: -1em -1em -1em -1em;
             height: 10%;
         }
-        .header-list{
+
+        .header-list {
             text-align: center;
             padding-top: 0.7em;
             display: grid;
@@ -32,7 +33,6 @@
             list-style-type: none
 
         }
-
 
 
     </style>
@@ -45,16 +45,16 @@
                 <a href="/" class="{{request()->is('/') ? 'active' : ''}}">Home</a>
             </li>
             <li>
-                <a href="/" class="{{request()->is('/about') ? 'active' : ''}}">About</a>
+                <a href="/" class="{{request()->is('about') ? 'active' : ''}}">About</a>
             </li>
             <li>
-                <a href="/browse" class="{{request()->is('/browse', 'browse/*') ? 'active' : ''}}">Browse</a>
+                <a href="/browse" class="{{request()->is('browse', 'browse/*') ? 'active' : ''}}">Browse</a>
             </li>
             <li>
-                <a href="/" class="{{request()->is('/login') ? 'active' : ''}}">Log in</a>
+                <a href="/" class="{{request()->is('login') ? 'active' : ''}}">Log in</a>
             </li>
             <li>
-                <a href="/" class="{{request()->is('/register') ? 'active' : ''}}">Register</a>
+                <a href="/" class="{{request()->is('register') ? 'active' : ''}}">Register</a>
             </li>
 
         </ul>

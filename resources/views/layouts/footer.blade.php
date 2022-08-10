@@ -6,21 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        p{
-            color: #302360
-        }
-        .my-footer{
+
+        .my-footer {
             padding-top: 70em;
             font-size: small;
             text-align: center;
             vertical-align: bottom;
+            color: #302360
         }
     </style>
 </head>
 <body>
 
 <footer class="my-footer">
-<p>Bohdan Łukaszewicz</p>
+    <p>Bohdan Łukaszewicz</p>
     <p>Demo Laravel 2022</p>
 
 </footer>

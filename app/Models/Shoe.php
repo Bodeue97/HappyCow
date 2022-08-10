@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,7 +10,10 @@ class Shoe extends Model
 {
     use HasFactory;
 
-    public function sizes(){
-        return $this->hasMany(Size::class);
+    public $timestamps = false;
+
+    public function sizes()
+    {
+        return $this->hasMany(\App\Models\Size::class);
     }
 }
