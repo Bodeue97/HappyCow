@@ -48,7 +48,7 @@
                 <a href="/" class="{{request()->is('about') ? 'active' : ''}}">About</a>
             </li>
             <li>
-                <a href="/browse" class="{{request()->is('browse', 'browse/*') ? 'active' : ''}}">Browse</a>
+                <a href="/shoes" class="{{request()->is('shoes', 'shoes/*') ? 'active' : ''}}">Browse</a>
             </li>
             <li>
                 <a href="/" class="{{request()->is('login') ? 'active' : ''}}">Log in</a>

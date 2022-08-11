@@ -11,6 +11,7 @@ class Shoe extends Model
     use HasFactory;
 
     public $timestamps = false;
+    public $fillable = ['brand', 'model', 'color', 'price', 'size_id'];
 
     public function sizes()
     {
