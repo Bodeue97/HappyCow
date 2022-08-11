@@ -38,12 +38,12 @@ class SizeController extends Controller
     public function store(Request $request)
     {
         $size = Size::create([
-            'EU'=>$request->input('EU'),
-            'UK'=>$request->input('UK'),
-            'US_male'=>$request->input('US_male'),
-            'US_female'=>$request->input('US_female'),
+            'EU' => $request->input('EU'),
+            'UK' => $request->input('UK'),
+            'US_male' => $request->input('US_male'),
+            'US_female' => $request->input('US_female'),
         ]);
-return redirect('/admin/sizes');
+        return redirect('/admin/sizes');
     }
 
     /**
@@ -60,34 +60,49 @@ return redirect('/admin/sizes');
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Size $size
+     * @param Id $id
      * @return Response
      */
-    public function edit(Size $size)
+    public function edit($id)
     {
-        //
+
+        $size = Size::find($id);
+        return view('admin.edit')->with('size', $size);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param Size $size
+     * @param Id $id
      * @return Response
      */
-    public function update(Request $request, Size $size)
+    public function update(Request $request, $id)
     {
-        //
+
+
+        $size = Size::find($id);
+        $size= Size::where('id',$id)->update([
+            'EU' => $request->input('EU'),
+            'UK' => $request->input('UK'),
+            'US_male' => $request->input('US_male'),
+            'US_female' => $request->input('US_female')
+        ]);
+
+
+        return redirect('/admin/sizes');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Size $size
+     * @param Id $id
      * @return Response
      */
-    public function destroy(Size $size)
+    public function destroy($id)
     {
-        //
+        $size = Size::destroy($id);
+        return redirect('/admin/sizes');
+
     }
 }
