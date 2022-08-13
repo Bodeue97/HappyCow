@@ -11,10 +11,10 @@ class Shoe extends Model
     use HasFactory;
 
     public $timestamps = false;
-    public $fillable = ['brand', 'model', 'color', 'price'];
+    public $fillable = ['brand', 'model', 'color', 'price', 'size_ids'];
 
-    public function sizes(){
-        return $this->belongsToMany(Size::class);
-    }
+    protected $casts = ['size_ids' => 'array',
+    ];
+
 
 }

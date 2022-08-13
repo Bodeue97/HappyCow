@@ -18,6 +18,8 @@ return new class extends Migration {
             $table->string('model');
             $table->string('color');
             $table->decimal('price', 8, 2);
+            $table->json('size_ids')->nullable();
+
 
         });
     }

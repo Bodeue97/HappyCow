@@ -83,7 +83,7 @@
         <label>Choose shoe model</label>
         <select name="shoe">
             @foreach($shoes as $shoe)
-            <option value="{{$shoe}}">{{$shoe->model}}}</option>
+            <option value="{{$shoe}}">{{$shoe->model}}</option>
             @endforeach
         </select>
 

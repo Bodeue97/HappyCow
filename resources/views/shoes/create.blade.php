@@ -87,6 +87,7 @@
             <input class="niminput" type="text" name="color">
             <h5>Price</h5>
             <input class="niminput" type="number" min="0" step="0.01" name="price">
+
             <p></p>
 
 

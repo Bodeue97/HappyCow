@@ -32,6 +32,9 @@
             background: rgb(241, 100, 2);
 
         }
+        .size-cells{
+            width: 4em;
+        }
 
 
     </style>
@@ -57,10 +60,10 @@
                 <table>
                     <thead>
                     <tr>
-                        <th scope="col">EU</th>
-                        <th scope="col">UK</th>
-                        <th scope="col">US (M)</th>
-                        <th scope="col">US (F)</th>
+                        <th class="size-cells"scope="col">EU</th>
+                        <th class="size-cells"scope="col">UK</th>
+                        <th class="size-cells"scope="col">US (M)</th>
+                        <th class="size-cells"scope="col">US (F)</th>
                     </tr>
                     </thead>
                 </table>
@@ -68,7 +71,54 @@
         </tr>
         </thead>
         <tbody>
+        @foreach($shoes as $shoe)
 
+            <tr>
+                <td>{{$shoe->brand}}</td>
+                <td>{{$shoe->model}}</td>
+                <td>{{$shoe->color}}</td>
+                <td>{{$shoe->price}}</td>
+                <td>
+                    <table>
+                        <tbody>
+                        @if($shoe->size_ids!=null)
+                            @if(gettype($shoe->size_ids) == 'integer')
+                                @foreach($sizes as $size)
+                                    @if($shoe->size_ids == $size->id)
+                                        <th class="size-cells">{{$size->EU}}</th>
+                                        <th class="size-cells">{{$size->UK}}</th>
+                                        <th class="size-cells">{{$size->US_male}}</th>
+                                        <th class="size-cells">{{$size->US_female}}</th>
+                                    @endif
+                                @endforeach
+
+
+                        @else
+                        @foreach($shoe->size_ids as $ids)
+                            <tr>
+
+                                @foreach($sizes as $size)
+                                    @if($ids == $size->id)
+                                        <th class="size-cells">{{$size->EU}}</th>
+                                        <th class="size-cells">{{$size->UK}}</th>
+                                        <th class="size-cells">{{$size->US_male}}</th>
+                                        <th class="size-cells">{{$size->US_female}}</th>
+                                    @endif
+                                        @endforeach
+
+                            </tr>
+                        @endforeach
+
+                            @endif
+                            @endif
+
+
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+        @endforeach
 
 
         </tbody>

@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Shoe;
 use App\Models\Size;
 use Illuminate\Http\Request;
+use Ramsey\Uuid\Type\Integer;
 
 class ProductController extends Controller
 {
@@ -16,13 +17,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+
         $shoes = Shoe::all();
         $sizes = Size::all();
-        $result = array();
 
 
-        return view('product.index', compact(['products', 'shoes', 'sizes']));
+        return view('product.index', compact(['shoes', 'sizes']));
     }
 
     /**
@@ -47,14 +47,42 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
-        $shoe_id = json_decode($request->get('shoe'))->id;
+
+
+        $shoe_id= json_decode($request->get('shoe'))->id;
         $size_id = json_decode($request->get('size'))->id;
 
+        $shoe = Shoe::find($shoe_id);
 
-        Product::create([
-            'shoe_id'=>$shoe_id,
-            'size_id'=>$size_id
+        if($shoe->size_ids == null){
+            $sizesToAdd = $size_id;
+
+        }
+        if(gettype($shoe->size_ids) == 'integer'){
+            $sizesToAdd[] = $shoe->size_ids;
+
+            array_push($sizesToAdd, $size_id);
+
+
+        }if(gettype($shoe->size_ids) == 'array'){
+            $sizesToAdd = $shoe->size_ids;
+
+            array_push($sizesToAdd, $size_id);
+        }
+
+
+
+
+
+        $shoe->update([
+            'size_ids' => $sizesToAdd
         ]);
+
+
+
+
+
+
 
         return redirect('/products');
     }

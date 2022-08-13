@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Shoe;
-use App\Models\Size;
 use Illuminate\Http\Request;
 
 class ShoeController extends Controller
@@ -32,6 +31,7 @@ class ShoeController extends Controller
      */
     public function create()
     {
+
 
 
         return view('shoes.create');
