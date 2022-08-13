@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/about', function (){
+    return view('about');
+});
+
 
 Route::resource('/admin/sizes', SizeController::class);
 
@@ -33,9 +37,9 @@ Route::get('/products/create', [ProductController::class, 'create']);
 
 Route::post('/products', [ProductController::class, 'store']);
 
+Route::post('/products/search', [ProductController::class, 'search']);
 
-
-
+Route::put('/products/{shoe_id}/{size_id}', [ProductController::class, 'update']);
 
 
 

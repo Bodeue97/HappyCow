@@ -65,26 +65,8 @@
     </style>
 </head>
 <body>
-
 @extends('layouts.app')
-
 @section('content')
-    <div class="add-button">
-        <a href="/products/create">
-            <button class="add">Add new</button>
-        </a>
-    </div>
-
-    <div class="form-container">
-        <form action="/products/search" method="post">
-            @csrf
-            @method('POST')
-            <h5>Find shoes by keyword</h5>
-            <input class="input-search" type="text" name="keyword"/>
-            <button type="submit">Search</button>
-        </form>
-    </div>
-
 
     <table>
         <thead>
@@ -112,7 +94,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($shoes as $shoe)
+
 
             <tr>
                 <td>{{$shoe->brand}}</td>
@@ -174,7 +156,7 @@
                 </td>
             </tr>
 
-        @endforeach
+
 
 
         </tbody>

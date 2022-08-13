@@ -71,13 +71,13 @@
             @csrf
             @method('PUT')
             <h5>EU</h5>
-            <input class="niminput" type="number" step="0.1" name="EU" value="{{$size->EU}}" required>
+            <input class="niminput" type="number" min="0.5" max="99.99"step="0.1" name="EU" value="{{$size->EU}}" required>
             <h5>UK</h5>
-            <input class="niminput" type="number" step="0.1" name="UK" value="{{$size->UK}}"required>
+            <input class="niminput" type="number" min="0.5" max="99.99"step="0.1" name="UK" value="{{$size->UK}}"required>
             <h5>US (M)</h5>
-            <input class="niminput" type="number" step="0.1" name="US_male" value="{{$size->US_male}}"required>
+            <input class="niminput" type="number" min="0.5" max="99.99"step="0.1" name="US_male" value="{{$size->US_male}}"required>
             <h5>US (F)</h5>
-            <input class="niminput" type="number" step="0.1" name="US_female"value="{{$size->US_female}}">
+            <input class="niminput" type="number" min="0.5" max="99.99"step="0.1" name="US_female"value="{{$size->US_female}}">
             <p></p>
             <button class="form-button" type="submit" ><h4>UPDATE</h4></button>
         </form>

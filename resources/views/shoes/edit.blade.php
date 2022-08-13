@@ -78,7 +78,7 @@
             <h5>Color</h5>
             <input class="niminput" type="text" name="color" value="{{$shoe->color}}"required>
             <h5>Price</h5>
-            <input class="niminput" type="number" step="0.01" name="price"value="{{$shoe->price}}">
+            <input class="niminput" type="number" min="0" max="100000"step="0.01" name="price"value="{{$shoe->price}}">
             <p></p>
             <button class="form-button" type="submit" ><h4>UPDATE</h4></button>
         </form>

@@ -45,7 +45,7 @@
                 <a href="/" class="{{request()->is('/') ? 'active' : ''}}">Home</a>
             </li>
             <li>
-                <a href="/" class="{{request()->is('about') ? 'active' : ''}}">About</a>
+                <a href="/about" class="{{request()->is('about') ? 'active' : ''}}">About</a>
             </li>
             <li>
                 <a href="/products" class="{{request()->is('products', 'products/*') ? 'active' : ''}}">Browse</a>
@@ -55,6 +55,12 @@
             </li>
             <li>
                 <a href="/" class="{{request()->is('register') ? 'active' : ''}}">Register</a>
+            </li>
+            <li>
+                <a href="/admin/sizes" class="{{request()->is('admin/*') ? 'active' : ''}}">Sizes</a>
+            </li>
+            <li>
+                <a href="/shoes" class="{{request()->is('shoes', 'shoes/*') ? 'active' : ''}}">Shoes</a>
             </li>
 
         </ul>

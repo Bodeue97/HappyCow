@@ -69,13 +69,13 @@
 <div>    <form action="/admin/sizes" method="post">
         @csrf
         <h5>EU</h5>
-        <input class="niminput" type="number" step="0.1" name="EU" required>
+        <input class="niminput" type="number" min="0.5" max="99.99" step="0.1" name="EU" required>
         <h5>UK</h5>
-        <input class="niminput" type="number" step="0.1" name="UK" required>
+        <input class="niminput" type="number" min="0.5" max="99.99"step="0.1" name="UK" required>
         <h5>US (M)</h5>
-        <input class="niminput" type="number" step="0.1" name="US_male" required>
+        <input class="niminput" type="number"min="0.5" max="99.99" step="0.1" name="US_male" required>
         <h5>US (F)</h5>
-        <input class="niminput" type="number" step="0.1" name="US_female">
+        <input class="niminput" type="number" min="0.5" max="99.99"step="0.1" name="US_female">
         <p></p>
         <button class="form-button" type="submit"><h4>ADD</h4></button>
     </form>

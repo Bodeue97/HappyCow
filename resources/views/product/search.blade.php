@@ -80,7 +80,7 @@
             @csrf
             @method('POST')
             <h5>Find shoes by keyword</h5>
-            <input class="input-search" type="text" name="keyword"/>
+            <input class="input-search"type="text" name="keyword"/>
             <button type="submit">Search</button>
         </form>
     </div>
@@ -97,18 +97,15 @@
                 <table>
                     <thead>
                     <tr>
-                        <th class="size-cells" scope="col">EU</th>
-                        <th class="size-cells" scope="col">UK</th>
-                        <th class="size-cells" scope="col">US (M)</th>
-                        <th class="size-cells" scope="col">US (F)</th>
+                        <th class="size-cells"scope="col">EU</th>
+                        <th class="size-cells"scope="col">UK</th>
+                        <th class="size-cells"scope="col">US (M)</th>
+                        <th class="size-cells"scope="col">US (F)</th>
                         <th class="size-cells" scope="col"></th>
-
-
                     </tr>
                     </thead>
                 </table>
             </th>
-            -
         </tr>
         </thead>
         <tbody>
@@ -140,6 +137,7 @@
                                         </th>
                                     @endif
                                 @endforeach
+
 
                             @else
                                 @foreach($shoe->size_ids as $ids)
