@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Shoe;
 use App\Models\Size;
 use Illuminate\Http\Request;
 
-class ShoeController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,14 +16,13 @@ class ShoeController extends Controller
      */
     public function index()
     {
-
-
+        $products = Product::all();
         $shoes = Shoe::all();
+        $sizes = Size::all();
+        $result = array();
 
 
-
-
-        return view('shoes.index')->with('shoes', $shoes);
+        return view('product.index', compact(['products', 'shoes', 'sizes']));
     }
 
     /**
@@ -32,9 +32,10 @@ class ShoeController extends Controller
      */
     public function create()
     {
+        $shoes = Shoe::all();
+        $sizes = Size::all();
 
-
-        return view('shoes.create');
+        return view('product.create')->with('shoes', $shoes)->with('sizes', $sizes);
     }
 
     /**
@@ -45,70 +46,61 @@ class ShoeController extends Controller
      */
     public function store(Request $request)
     {
-        $shoe = Shoe::create([
-            'brand' => $request->input('brand'),
-            'model' => $request->input('model'),
-            'color' => $request->input('color'),
-            'price' => $request->input('price'),
 
+        $shoe_id = json_decode($request->get('shoe'))->id;
+        $size_id = json_decode($request->get('size'))->id;
+
+
+        Product::create([
+            'shoe_id'=>$shoe_id,
+            'size_id'=>$size_id
         ]);
-        return redirect('/shoes');
+
+        return redirect('/products');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  Id $id
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        $shoe = Shoe::find($id);
-        return view('shoes.show')->with('shoe', $shoe);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Id $id
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        $shoe=Shoe::find($id);
-        return view('shoes.edit')->with('shoe', $shoe);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  Id $id
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        $shoe = Shoe::find($id);
-        $shoe->update([
-            'brand'=>$request->input('brand'),
-            'model'=>$request->input('model'),
-            'color'=>$request->input('color'),
-            'price'=>$request->input('price'),
-        ]);
-        return redirect('/shoes');
-
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Id $id
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-
-        Shoe::destroy($id);
-        return redirect('/shoes');
+        //
     }
 }

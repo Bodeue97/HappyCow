@@ -19,7 +19,7 @@
             font-size: xx-large;
         }
         .delete{
-            padding-top: 1em;class="add-button"
+            padding-top: 1em;
         }
 
         button{
@@ -30,11 +30,6 @@
             border-radius: 0.5em;
             background: rgb(241,100,2);
 
-        }
-
-        .add-button{
-            text-align: center;
-            margin-left: 15em;
         }
 
 
@@ -62,7 +57,7 @@
         </thead>
 
         <tbody>
-        @foreach($shoes as $shoe)
+
             <tr>
                 <td>{{$shoe->brand}}</td>
                 <td>{{$shoe->model}}</td>
@@ -76,17 +71,12 @@
                         <button type="submit">Delete</button> </form>
                 </td>
             </tr>
-        @endforeach
+
         </tbody>
 
 
-
-
     </table>
-   <div class="add-button">  <a  href="/shoes/create">
-        <button>Add new</button>
-    </a>
-   </div>
+
 @endsection
 </body>
 </html>

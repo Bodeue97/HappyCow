@@ -1,14 +1,14 @@
 <?php
 
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cart extends Model
+class Product extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
+    public $fillable = ['shoe_id', 'size_id'];
 }

@@ -8,7 +8,7 @@
     <style>
         table, th, td {
             font-size: xx-large;
-            margin:  auto;
+            margin: auto;
             text-align: center;
             border: 1px solid;
             background: rgb(255, 186, 148);
@@ -18,23 +18,19 @@
         td {
             font-size: xx-large;
         }
-        .delete{
-            padding-top: 1em;class="add-button"
+
+        .delete {
+            padding-top: 1em;
         }
 
-        button{
+        button {
             font-family: 'Alumni Sans Inline One';
             font-size: x-large;
             border-width: 4px;
             border-color: #e2160b;
             border-radius: 0.5em;
-            background: rgb(241,100,2);
+            background: rgb(241, 100, 2);
 
-        }
-
-        .add-button{
-            text-align: center;
-            margin-left: 15em;
         }
 
 
@@ -46,8 +42,9 @@
 
 @section('content')
 
-
-
+    <a href="/products/create">
+        <button>Add new</button>
+    </a>
 
     <table>
         <thead>
@@ -56,37 +53,27 @@
             <th scope="col">Model</th>
             <th scope="col">Color</th>
             <th scope="col">Price</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
+            <th scope="col">Size
+                <table>
+                    <thead>
+                    <tr>
+                        <th scope="col">EU</th>
+                        <th scope="col">UK</th>
+                        <th scope="col">US (M)</th>
+                        <th scope="col">US (F)</th>
+                    </tr>
+                    </thead>
+                </table>
+            </th>
         </tr>
         </thead>
-
         <tbody>
-        @foreach($shoes as $shoe)
-            <tr>
-                <td>{{$shoe->brand}}</td>
-                <td>{{$shoe->model}}</td>
-                <td>{{$shoe->color}}</td>
-                <td>{{$shoe->price}}</td>
-                <td><a href="/shoes/{{$shoe->id}}/edit"> <button type="button">Edit</button></a></td>
-                <td>
-                    <form class="delete" method="post" action="/shoes/{{$shoe->id}}">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Delete</button> </form>
-                </td>
-            </tr>
-        @endforeach
+
+
+
         </tbody>
-
-
-
-
     </table>
-   <div class="add-button">  <a  href="/shoes/create">
-        <button>Add new</button>
-    </a>
-   </div>
+
 @endsection
 </body>
 </html>

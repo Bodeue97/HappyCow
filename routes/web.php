@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShoeController;
 use App\Http\Controllers\SizeController;
 use Illuminate\Support\Facades\Route;
@@ -20,15 +21,18 @@ Route::get('/', function () {
 });
 
 
-
 Route::resource('/admin/sizes', SizeController::class);
 
-//Shoes routes
-Route::get('/shoes', [ShoeController::class, 'index']);
+Route::resource('/shoes', ShoeController::class);
 
-Route::post('/shoes', [ShoeController::class, 'store']);
+//Products routes
 
-Route::get('/shoes/create', [ShoeController::class, 'create']);
+Route::get('/products', [ProductController::class, 'index']);
+
+Route::get('/products/create', [ProductController::class, 'create']);
+
+Route::post('/products', [ProductController::class, 'store']);
+
 
 
 

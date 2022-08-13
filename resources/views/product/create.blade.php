@@ -77,21 +77,24 @@
 @extends('layouts.app')
 
 @section('content')
-    <div>    <form action="/shoes" method="post" name="shoeform">
+    <div>
+        <form action="/products" method="post">
             @csrf
-            <h5>Brand:</h5>
-            <input class="niminput" type="text" name="brand">
-            <h5>Model:</h5>
-            <input class="niminput" type="text" name="model">
-            <h5>Color:</h5>
-            <input class="niminput" type="text" name="color">
-            <h5>Price</h5>
-            <input class="niminput" type="number" min="0" step="0.01" name="price">
-            <p></p>
+        <label>Choose shoe model</label>
+        <select name="shoe">
+            @foreach($shoes as $shoe)
+            <option value="{{$shoe}}">{{$shoe->model}}}</option>
+            @endforeach
+        </select>
 
+        <label>Choose size</label>
+        <select name="size">
+            @foreach($sizes as $size)
+                <option value="{{$size}}">{{$size->EU}}</option>
+            @endforeach
+        </select>
 
-            <p></p>
-            <button class="form-button" type="submit"><h4>ADD</h4></button>
+        <button type="submit">Add</button>
         </form>
 
     </div>

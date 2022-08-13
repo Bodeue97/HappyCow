@@ -14,8 +14,7 @@ class Size extends Model
     public $fillable = ['EU', 'UK', 'US_male', 'US_female'];
     public $timestamps = false;
 
-    public function shoe()
-    {
-        return $this->belongsTo(\App\Models\Shoe::class);
+    public function shoes(){
+        return $this->belongsToMany(Shoe::class);
     }
 }

@@ -1,4 +1,4 @@
-<html xmlns="http://www.w3.org/1999/html">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -35,8 +35,8 @@
 
         .niminput{
             text-align: center;
-            width: 7em;
-            height: 1em;
+            width: 10em;
+            height: 2em;
             border-radius: 0.6em;
             background: rgb(255,186,148);
             background: radial-gradient(circle, rgba(255,186,148,1) 0%, rgba(241,48,2,1) 59%);
@@ -48,26 +48,16 @@
         }
 
         .form-button{
-            width: 7em;
+            width: auto;
             height: 4em;
             background: rgb(241,48,2);
             background: radial-gradient(circle, rgba(241,48,2,1) 3%, rgba(255,186,148,1) 90%);
             border-radius: 1em;
             margin-bottom: 2em;
-        }
-        .select-shoe{
-            text-align: center;
-            margin-right: -4em;
-            border-radius: 0.6em;
-            background: rgb(255,186,148);
-            background: radial-gradient(circle, rgba(255,186,148,1) 0%, rgba(241,48,2,1) 59%);
-            color: #302360;
-        }
-        .select-input{
-            border-radius: 0.6em;
-            background: rgb(255,186,148);
-            background: radial-gradient(circle, rgba(255,186,148,1) 0%, rgba(241,48,2,1) 59%);
-            color: #302360;
+
+
+
+
         }
     </style>
 </head>
@@ -77,21 +67,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <div>    <form action="/shoes" method="post" name="shoeform">
+    <div>
+        <form action="/shoes/{{$shoe->id}}" method="post">
             @csrf
-            <h5>Brand:</h5>
-            <input class="niminput" type="text" name="brand">
-            <h5>Model:</h5>
-            <input class="niminput" type="text" name="model">
-            <h5>Color:</h5>
-            <input class="niminput" type="text" name="color">
+            @method('PUT')
+            <h5>Brand</h5>
+            <input class="niminput" type="text" name="brand" value="{{$shoe->brand}}" required>
+            <h5>Model</h5>
+            <input class="niminput" type="text" name="model" value="{{$shoe->model}}"required>
+            <h5>Color</h5>
+            <input class="niminput" type="text" name="color" value="{{$shoe->color}}"required>
             <h5>Price</h5>
-            <input class="niminput" type="number" min="0" step="0.01" name="price">
+            <input class="niminput" type="number" step="0.01" name="price"value="{{$shoe->price}}">
             <p></p>
-
-
-            <p></p>
-            <button class="form-button" type="submit"><h4>ADD</h4></button>
+            <button class="form-button" type="submit" ><h4>UPDATE</h4></button>
         </form>
 
     </div>
