@@ -45,4 +45,3 @@ Route::put('/products/{shoe_id}/{size_id}', [ProductController::class, 'update']
 
 
 
-

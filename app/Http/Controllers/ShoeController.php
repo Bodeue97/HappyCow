@@ -45,6 +45,15 @@ class ShoeController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'brand'=>'required|alpha',
+            'model'=>'required|string',
+            'color'=>'required|alpha',
+            'price'=>'required|numeric|between:1,99999.99',
+        ]);
+
+
         $shoe = Shoe::create([
             'brand' => $request->input('brand'),
             'model' => $request->input('model'),
@@ -88,6 +97,13 @@ class ShoeController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $request->validate([
+            'brand'=>'required|alpha',
+            'model'=>'required|string',
+            'color'=>'required|alpha',
+            'price'=>'required|numeric|between:1,99999.99',
+        ]);
         $shoe = Shoe::find($id);
         $shoe->update([
             'brand'=>$request->input('brand'),

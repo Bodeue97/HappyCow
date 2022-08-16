@@ -37,6 +37,13 @@ class SizeController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+           'EU'=>'required|numeric|between:1,99.5|unique:sizes',
+            'UK'=>'required|numeric|between:1,99.5|unique:sizes',
+            'US_male'=>'required|numeric|between:1,99.5|unique:sizes',
+            'US_female'=>'nullable|numeric|between:1,99.5|unique:sizes',
+        ]);
         $size = Size::create([
             'EU' => $request->input('EU'),
             'UK' => $request->input('UK'),
@@ -80,6 +87,12 @@ class SizeController extends Controller
     public function update(Request $request, $id)
     {
 
+        $request->validate([
+            'EU'=>'required|numeric|between:1,99.5|unique:sizes',
+            'UK'=>'required|numeric|between:1,99.5|unique:sizes',
+            'US_male'=>'required|numeric|between:1,99.5|unique:sizes',
+            'US_female'=>'nullable|numeric|between:1,99.5|unique:sizes',
+        ]);
 
         $size = Size::find($id);
         $size= Size::where('id',$id)->update([

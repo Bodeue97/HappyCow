@@ -66,6 +66,13 @@
 @extends('layouts.app')
 
 @section('content')
+
+    @if($errors->any())
+        <h1>ERROR: {{ implode('', $errors->all(':message')) }}</h1>
+
+
+    @else
+
 <div>    <form action="/admin/sizes" method="post">
         @csrf
         <h5>EU</h5>
@@ -80,9 +87,11 @@
         <button class="form-button" type="submit"><h4>ADD</h4></button>
     </form>
 
+
 </div>
 
 
+    @endif
 @endsection
 </body>
 </html>

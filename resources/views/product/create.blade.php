@@ -77,6 +77,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+
     <div>
         <form action="/products" method="post">
             @csrf

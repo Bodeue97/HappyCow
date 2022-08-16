@@ -48,6 +48,9 @@ class ProductController extends Controller
     {
 
 
+
+
+
         $shoe_id = json_decode($request->get('shoe'))->id;
         $size_id = json_decode($request->get('size'))->id;
 

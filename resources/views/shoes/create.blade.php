@@ -77,6 +77,13 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+    @if($errors->any())
+        <h1>ERROR: {{ implode('', $errors->all(':message')) }}</h1>
+
+
+    @else
     <div>    <form action="/shoes" method="post" name="shoeform">
             @csrf
             <h5>Brand:</h5>
@@ -96,7 +103,7 @@
         </form>
 
     </div>
-
+    @endif
 
 @endsection
 </body>
