@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShoeController;
 use App\Http\Controllers\SizeController;
@@ -16,30 +17,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
 
-Route::get('/about', function (){
-    return view('about');
-});
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/about', [HomeController::class, 'about']);
+
+//auth routes
+Route::get('/register', [HomeController::class, 'register']);
+Route::post('/register', [HomeController::class, 'store']);
+Route::get('/logout',[ HomeController::class, 'logout'])->middleware('auth');
+Route::get('/login', [HomeController::class, 'login']);
+Route::post('/login', [HomeController::class, 'read']);
 
 
-Route::resource('/admin/sizes', SizeController::class);
+//size routes
+Route::resource('/admin/sizes', SizeController::class)->middleware('admin');
 
-Route::resource('/shoes', ShoeController::class);
+//shoe routes
+Route::resource('/shoes', ShoeController::class)->middleware('admin');
 
-//Products routes
-
-Route::get('/products', [ProductController::class, 'index']);
-
-Route::get('/products/create', [ProductController::class, 'create']);
-
-Route::post('/products', [ProductController::class, 'store']);
-
+//product routes
+Route::resource('/products', ProductController::class);
 Route::post('/products/search', [ProductController::class, 'search']);
-
 Route::put('/products/{shoe_id}/{size_id}', [ProductController::class, 'update']);
+
+
+
 
 
 

@@ -1,10 +1,11 @@
-<html xmlns="http://www.w3.org/1999/html">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
     <style>
 
 
@@ -55,20 +56,7 @@
             border-radius: 1em;
             margin-bottom: 2em;
         }
-        .select-shoe{
-            text-align: center;
-            margin-right: -4em;
-            border-radius: 0.6em;
-            background: rgb(255,186,148);
-            background: radial-gradient(circle, rgba(255,186,148,1) 0%, rgba(241,48,2,1) 59%);
-            color: #302360;
-        }
-        .select-input{
-            border-radius: 0.6em;
-            backgconfirmround: rgb(255,186,148);
-            backgconfirmround: radial-gradient(circle, rgba(255,186,148,1) 0%, rgba(241,48,2,1) 59%);
-            coconfirmlor: #302360;
-        }
+
     </style>
 </head>
 <body>
@@ -84,27 +72,31 @@
 
 
     @else
-    <div>    <form action="/shoes" method="post" name="shoeform">
-            @csrf
-            <h5>Brand:</h5>
-            <input class="niminput" type="text" name="brand">
-            <h5>Model:</h5>
-            <input class="niminput" type="text" name="model">
-            <h5>Color:</h5>
-            <input class="niminput" type="text" name="color">
-            <h5>Price</h5>
-            <input class="niminput" type="number" min="0" max="100000" step="0.01" name="price">
+        <div>    <form action="/register" method="post">
+                @csrf
+                <h5>Name</h5>
+                <input class="niminput" type="text" name="name">
+                <h5>Email</h5>
+                <input class="niminput" type="text" name="email">
+                <h5>Password</h5>
+                <input class="niminput" type="password" name="password">
+                <h5>Confirm password</h5>
+                <input class="niminput" type="password" name="password_confirmation">
 
-            <p></p>
+                <p></p>
 
 
-            <p></p>
-            <button class="form-button" type="submit"><h4>ADD</h4></button>
-        </form>
+                <p></p>
+                <button class="form-button" type="submit"><h4>ADD</h4></button>
+            </form>
 
-    </div>
+        </div>
     @endif
 
 @endsection
+
+
+
+
 </body>
 </html>

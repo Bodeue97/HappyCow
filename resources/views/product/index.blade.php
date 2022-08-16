@@ -61,6 +61,10 @@
             width: 4em;
         }
 
+        .form-div{
+            margin-top: -7em;
+        }
+
 
     </style>
 </head>
@@ -85,7 +89,7 @@
         </form>
     </div>
 
-
+<div class="form-div">
     <table>
         <thead>
         <tr>
@@ -179,6 +183,7 @@
 
         </tbody>
     </table>
+</div>
 
 @endsection
 </body>
