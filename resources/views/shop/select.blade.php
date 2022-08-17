@@ -62,7 +62,7 @@
         }
 
         .form-div{
-            margin-top: auto;
+            margin-top: 1em;
         }
 
 
@@ -99,7 +99,7 @@
                         </thead>
                     </table>
                 </th>
-                -
+
             </tr>
             </thead>
             <tbody>
@@ -122,11 +122,11 @@
                                             <th class="size-cells">{{$size->US_male}}</th>
                                             <th class="size-cells">{{$size->US_female}}</th>
                                             <th class="form-cell">
-                                                <form class="delete" method="post"
-                                                      action="/products/{{$shoe->id}}/{{$size->id}}">
+                                                <form class="delete" method="get"
+                                                      action="/shop/{{$shoe->id}}/{{$size->id}}">
                                                     @csrf
-                                                    @method('PUT')
-                                                    <button type="submit">Delete</button>
+
+                                                    <button type="submit">Add To Cart</button>
                                                 </form>
                                             </th>
                                         @endif
@@ -143,11 +143,11 @@
                                                     <th class="size-cells">{{$size->US_male}}</th>
                                                     <th class="size-cells">{{$size->US_female}}</th>
                                                     <th class="form-cell">
-                                                        <form class="delete" method="post"
-                                                              action="/products/{{$shoe->id}}/{{$size->id}}">
+                                                        <form class="delete" method="get"
+                                                              action="/shop/{{$shoe->id}}/{{$size->id}}">
                                                             @csrf
-                                                            @method('PUT')
-                                                            <button type="submit">Delete</button>
+
+                                                            <button type="submit">Add To Cart</button>
                                                         </form>
                                                     </th>
                                                 @endif

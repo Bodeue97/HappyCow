@@ -11,6 +11,7 @@ class HomeController extends Controller
     public function index()
     {
 
+
         return view('home.index');
     }
 
@@ -52,6 +53,8 @@ class HomeController extends Controller
 
     public function login()
     {
+
+
         return view('home.login');
     }
 
@@ -86,6 +89,10 @@ class HomeController extends Controller
         return redirect('/');
 
     }
+
+
+
+
 
 
 }

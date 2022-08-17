@@ -80,6 +80,9 @@
                 <a href="/shoes" class="{{request()->is('shoes', 'shoes/*') ? 'active' : ''}}">Shoes</a>
             </li>
                 @endif
+                    <li>
+                        <a href="/cart" class="{{request()->is('cart') ? 'active' : ''}}">Cart</a>
+                    </li>
 @endif
         </ul>
 

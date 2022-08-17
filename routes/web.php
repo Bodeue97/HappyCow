@@ -46,9 +46,13 @@ Route::get('/shop', [ShopController::class, 'index']);
 
 Route::get('/shop/{brand}', [ShopController::class, 'brand']);
 
-route::get('/shop/model/{model}', [ShopController::class, 'model']);
+Route::get('/shop/model/{model}', [ShopController::class, 'model']);
 
+Route::get('/shop/{shoe_id}/{size_id}', [ShopController::class, 'add']);
 
+//cart routes
+
+Route::get('/cart', [HomeController::class, 'showCart']);
 
 
 

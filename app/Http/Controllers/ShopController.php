@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Shoe;
 use App\Models\Size;
 use Illuminate\Http\Request;
@@ -38,10 +39,15 @@ class ShopController extends Controller
 
 
         $shoes = DB::table('shoes')->select('*')->where('model', '=', $model)->get();
-//        dd(gettype($shoes[0]->size_ids));
         $sizes = Size::all();
 
         return view('shop.select', compact('shoes', 'sizes'));
+
+
+    }
+
+    public function add($size_id, $shoe_id){
+
 
 
     }
