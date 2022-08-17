@@ -16,7 +16,7 @@ class SizeController extends Controller
     public function index()
     {
         $sizes = Size::all();
-        return view('admin.sizes')->with('sizes', $sizes);
+        return view('sizes.sizes')->with('sizes', $sizes);
     }
 
     /**
@@ -26,7 +26,7 @@ class SizeController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        return view('sizes.create');
     }
 
     /**
@@ -50,7 +50,7 @@ class SizeController extends Controller
             'US_male' => $request->input('US_male'),
             'US_female' => $request->input('US_female'),
         ]);
-        return redirect('/admin/sizes');
+        return redirect('/sizes');
     }
 
     /**
@@ -74,7 +74,7 @@ class SizeController extends Controller
     {
 
         $size = Size::find($id);
-        return view('admin.edit')->with('size', $size);
+        return view('sizes.edit')->with('size', $size);
     }
 
     /**
@@ -103,7 +103,7 @@ class SizeController extends Controller
         ]);
 
 
-        return redirect('/admin/sizes');
+        return redirect('/sizes');
     }
 
     /**
@@ -115,7 +115,7 @@ class SizeController extends Controller
     public function destroy($id)
     {
         $size = Size::destroy($id);
-        return redirect('/admin/sizes');
+        return redirect('/sizes');
 
     }
 }

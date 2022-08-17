@@ -47,6 +47,9 @@
             <li>
                 <a href="/about" class="{{request()->is('about') ? 'active' : ''}}">About</a>
             </li>
+            <li>
+                <a href="/shop" class="{{request()->is('shop', 'shop/*') ? 'active' : ''}}">Shop</a>
+            </li>
             @if(auth()->guest())
             <li>
                 <a href="/login" class="{{request()->is('login') ? 'active' : ''}}">Log in</a>
@@ -71,7 +74,7 @@
             </li>
 
             <li>
-                <a href="/admin/sizes" class="{{request()->is('admin/*') ? 'active' : ''}}">Sizes</a>
+                <a href="/sizes" class="{{request()->is('sizes','sizes/*') ? 'active' : ''}}">Sizes</a>
             </li>
             <li>
                 <a href="/shoes" class="{{request()->is('shoes', 'shoes/*') ? 'active' : ''}}">Shoes</a>

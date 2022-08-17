@@ -30,15 +30,15 @@ Route::post('/login', [HomeController::class, 'read']);
 
 
 //size routes
-Route::resource('/admin/sizes', SizeController::class)->middleware('admin');
+Route::resource('/sizes', SizeController::class)->middleware('admin');
 
 //shoe routes
 Route::resource('/shoes', ShoeController::class)->middleware('admin');
 
 //product routes
-Route::resource('/products', ProductController::class);
-Route::post('/products/search', [ProductController::class, 'search']);
-Route::put('/products/{shoe_id}/{size_id}', [ProductController::class, 'update']);
+Route::resource('/products', ProductController::class)->middleware('admin');
+Route::post('/products/search', [ProductController::class, 'search'])->middleware('admin');
+Route::put('/products/{shoe_id}/{size_id}', [ProductController::class, 'update'])->middleware('admin');
 
 
 

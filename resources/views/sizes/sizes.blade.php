@@ -12,7 +12,8 @@
         text-align: center;
 
         }
-        table, th, td {
+        table {
+
             font-size: xx-large;
             margin: 10em auto 0 auto;
             text-align: center;
@@ -20,8 +21,25 @@
             background: rgb(255,186,148);
             background: radial-gradient(circle, rgba(255,186,148,1) 3%, rgba(241,48,2,1) 57%);
         }
+
+
+        th{
+            font-size: xx-large;
+            margin: 10em auto 0 auto;
+            text-align: center;
+            border: 1px solid;
+            background: rgb(255,186,148);
+            background: radial-gradient(circle, rgba(255,186,148,1) 3%, rgba(241,48,2,1) 57%);
+
+        }
         td{
             font-size: xx-large;
+            margin: 10em auto 0 auto;
+            text-align: center;
+            border: 1px solid;
+            background: rgb(255,186,148);
+            background: radial-gradient(circle, rgba(255,186,148,1) 3%, rgba(241,48,2,1) 57%);
+
         }
         .delete{
             padding-top: 1em;
@@ -60,7 +78,7 @@
             <th scope="col">UK</th>
             <th scope="col">US (M)</th>
             <th scope="col">US (F)</th>
-            <th scope="col"><a class="add-button" href="/admin/sizes/create"><button>Add Size</button></a></th>
+            <th scope="col"><a class="add-button" href="/sizes/create"><button>Add Size</button></a></th>
         </tr>
         </thead>
         <tbody>
@@ -79,10 +97,10 @@
                     {{$size->US_female}}
                 </td>
                 <td>
-                    <a href="/admin/sizes/{{$size->id}}/edit"> <button type="button">Edit</button></a>
+                    <a href="/sizes/{{$size->id}}/edit"> <button type="button">Edit</button></a>
                 </td>
                 <td>
-                    <form class="delete" method="post" action="/admin/sizes/{{$size->id}}">
+                    <form class="delete" method="post" action="/sizes/{{$size->id}}">
                         @csrf
                         @method('DELETE')
                         <button type="submit">Delete</button> </form>
