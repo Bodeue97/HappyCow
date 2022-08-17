@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShoeController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\SizeController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,13 @@ Route::resource('/shoes', ShoeController::class)->middleware('admin');
 Route::resource('/products', ProductController::class)->middleware('admin');
 Route::post('/products/search', [ProductController::class, 'search'])->middleware('admin');
 Route::put('/products/{shoe_id}/{size_id}', [ProductController::class, 'update'])->middleware('admin');
+
+//shop routes
+Route::get('/shop', [ShopController::class, 'index']);
+
+Route::get('/shop/{brand}', [ShopController::class, 'brand']);
+
+route::get('/shop/model/{model}', [ShopController::class, 'model']);
 
 
 

@@ -9,66 +9,20 @@
 
 
 
-        h5{
-            border-radius: 2em;
-            margin-left: 25%;
-            width: 50%;
-            background-color: rgba(255,25,0,0.4);
-        }
 
-        div{
+        .create-div{
 
             text-align: center;
             background-color: rgba(255,255,255,0.6);
-            margin: -1em -1em -1em -1em;
+            margin: 1em -1em -1em -1em;
             box-shadow: #302360 5px 5px;
 
         }
 
 
-        h4{
-
-            margin: 0 0 0 0;
-            font-family: 'Alumni Sans Inline One';
-            font-size: xxx-large;
-        }
-
-        .niminput{
-            text-align: center;
-            width: 7em;
-            height: 1em;
-            border-radius: 0.6em;
-            background: rgb(255,186,148);
-            background: radial-gradient(circle, rgba(255,186,148,1) 0%, rgba(241,48,2,1) 59%);
-            color: #302360;
-            font-size: xx-large;
-            font-family: 'Alumni Sans Inline One';
 
 
-        }
 
-        .form-button{
-            width: 7em;
-            height: 4em;
-            background: rgb(241,48,2);
-            background: radial-gradient(circle, rgba(241,48,2,1) 3%, rgba(255,186,148,1) 90%);
-            border-radius: 1em;
-            margin-bottom: 2em;
-        }
-        .select-shoe{
-            text-align: center;
-            margin-right: -4em;
-            border-radius: 0.6em;
-            background: rgb(255,186,148);
-            background: radial-gradient(circle, rgba(255,186,148,1) 0%, rgba(241,48,2,1) 59%);
-            color: #302360;
-        }
-        .select-input{
-            border-radius: 0.6em;
-            background: rgb(255,186,148);
-            background: radial-gradient(circle, rgba(255,186,148,1) 0%, rgba(241,48,2,1) 59%);
-            color: #302360;
-        }
     </style>
 </head>
 <body>
@@ -79,13 +33,13 @@
 @section('content')
 
 
-    <div>
+    <div class="create-div">
         <form action="/products" method="post">
             @csrf
         <label>Choose shoe model</label>
         <select name="shoe">
             @foreach($shoes as $shoe)
-            <option value="{{$shoe}}">{{$shoe->model}}</option>
+            <option value="{{$shoe}}">{{$shoe->model.' '. $shoe->color}}</option>
             @endforeach
         </select>
 

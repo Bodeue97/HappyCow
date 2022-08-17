@@ -11,18 +11,18 @@ class HomeController extends Controller
     public function index()
     {
 
-        return view('index');
+        return view('home.index');
     }
 
     public function about()
     {
-        return view('about');
+        return view('home.about');
     }
 
     public function register()
     {
 
-        return view('register');
+        return view('home.register');
     }
 
     public function store(Request $request)
@@ -52,7 +52,7 @@ class HomeController extends Controller
 
     public function login()
     {
-        return view('login');
+        return view('home.login');
     }
 
     public function read(Request $request)
