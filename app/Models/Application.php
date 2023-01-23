@@ -12,10 +12,11 @@ class Application extends Model
     protected $fillable = [
         'cattle',
         'application_date',
+        'price',
         'verified',
         'reserved',
         'paid_for',
-        'transports_carrier_id_foreign',
+        'reserved_by',
 
 
     ];

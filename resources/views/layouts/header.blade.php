@@ -18,8 +18,17 @@
             @if(auth()->user()->role =='user')
             <li>
                 <a href="/application_create">Dodaj ofertę sprzedaży</a>
-            </li>
+            </li><li>
+                        <a href="/show_applications">Zobacz oferty sprzedaży</a>
+                    </li>
             @endif
+            @endif
+            @if(auth()->user() != null)
+                @if(auth()->user()->role =='boss')
+                    <li>
+                        <a href="/verify_applications">Zatwierdź oferty</a>
+                    </li>
+                @endif
             @endif
 
             @if(auth()->user() != null)

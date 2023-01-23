@@ -20,7 +20,7 @@ return new class extends Migration
             $table->decimal('price', 12,2, true)->default(0);
             $table->unsignedBigInteger('transport_id')->nullable();
             $table->boolean('verified')->default(false);
-            $table->boolean('reserved')->default(false);
+            $table->unsignedBigInteger('reserved_by')->nullable();
             $table->boolean('paid_for')->default(false);
 
             $table->foreign('transport_id')
@@ -28,8 +28,13 @@ return new class extends Migration
                 ->on('transports')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->foreign('reserved_by')
+            ->references('id')
+            ->on('users')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
 
-        });
+    });
     }
 
     /**

@@ -33,6 +33,14 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/application_create', [App\Http\Controllers\ApplicationController::class, 'create'])->middleware('user');
 Route::post('/application_store', [ApplicationController::class, 'store'])->middleware('user');
 Route::get('/verify_applications', [ApplicationController::class, 'verifyApplications'])->middleware('boss');
+Route::put('/verify_applications/{id}', [ApplicationController::class, 'confirmVerify'])->middleware('boss');
+Route::delete('/verify_applications/{id}', [ApplicationController::class, 'delete'])->middleware('boss');
+Route::get('/show_applications', [ApplicationController::class, 'show'])->middleware('user');
+Route::put('/order_cattle/{id}', [ApplicationController::class, 'orderCattle'])->middleware('user');
+Route::get('/show_my_orders', [ApplicationController::class, 'reservedApplications'])->middleware('user');
+
+
+
 
 
 //Transport routes
