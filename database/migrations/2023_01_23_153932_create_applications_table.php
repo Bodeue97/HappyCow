@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('seller_id');
             $table->string('cattle');
             $table->date('application_date')->format('YYYY-MM-DD')->nullable();
             $table->decimal('price', 12,2, true)->default(0);
@@ -22,7 +23,7 @@ return new class extends Migration
             $table->boolean('verified')->default(false);
             $table->unsignedBigInteger('reserved_by')->nullable();
             $table->boolean('paid_for')->default(false);
-
+            $table->string('account_number');
             $table->foreign('transport_id')
                 ->references('id')
                 ->on('transports')
@@ -33,6 +34,11 @@ return new class extends Migration
             ->on('users')
             ->onUpdate('cascade')
             ->onDelete('cascade');
+            $table->foreign('seller_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
     });
     }

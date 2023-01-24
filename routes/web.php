@@ -30,14 +30,24 @@ Route::get('/', [HomeController::class, 'index']);
 
 
 //Application routes
+//user
 Route::get('/application_create', [App\Http\Controllers\ApplicationController::class, 'create'])->middleware('user');
 Route::post('/application_store', [ApplicationController::class, 'store'])->middleware('user');
+Route::get('/show_applications', [ApplicationController::class, 'show'])->middleware('user');
+Route::put('/order_cattle/{id}', [ApplicationController::class, 'orderCattle'])->middleware('user');
+Route::get('/show_my_orders', [ApplicationController::class, 'myReservedApplications'])->middleware('user');
+Route::get('/my_applications', [ApplicationController::class, 'showMyApplications'])->middleware('user');
+
+//boss
 Route::get('/verify_applications', [ApplicationController::class, 'verifyApplications'])->middleware('boss');
 Route::put('/verify_applications/{id}', [ApplicationController::class, 'confirmVerify'])->middleware('boss');
 Route::delete('/verify_applications/{id}', [ApplicationController::class, 'delete'])->middleware('boss');
-Route::get('/show_applications', [ApplicationController::class, 'show'])->middleware('user');
-Route::put('/order_cattle/{id}', [ApplicationController::class, 'orderCattle'])->middleware('user');
-Route::get('/show_my_orders', [ApplicationController::class, 'reservedApplications'])->middleware('user');
+
+//accountant
+Route::get('/accountant_finalize_orders', [ApplicationController::class, 'finalizeOrders'])->middleware('accountant');
+Route::put('/finalize_order/{id}', [ApplicationController::class, 'finalizeUpdate'])->middleware('accountant');
+
+
 
 
 

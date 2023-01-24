@@ -21,6 +21,8 @@
         <input type="text" required name="cattle">
         Cena
         <input type="number" required name="price" min="0" value="0" step="0.1">
+        Numer konta
+        <input type="text" required name="account_number">
         <button class="form-button" type="submit"><h4>Dodaj ofertę</h4></button>
     </form>
 

@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Application;
+use App\Models\Transport;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+
 
 class ApplicationController extends Controller
 {
@@ -30,7 +31,10 @@ class ApplicationController extends Controller
         Application::create([
             'cattle' => $request->input('cattle'),
             'price' => $request->input('price'),
-            'application_date' => date('Y-m-d')
+            'application_date' => date('Y-m-d'),
+            'account_number' => $request->input('account_number'),
+            'seller_id' => Auth::id(),
+
 
         ]);
         return "Twoje zgłoszenie wkrótce zatwierdzone";
@@ -74,10 +78,44 @@ class ApplicationController extends Controller
 
     }
 
-    public function reservedApplications(){
-        $applications = Application::all();
+    public function myReservedApplications(){
+
+        $applications = Application::all()->where('reserved_by',Auth::id() );
+
 
         return view('application.show_my_reserved')->with('applications', $applications);
     }
+
+
+    public function finalizeOrders(){
+        $applications = Application::all()->where('paid_for', false)->where('reserved_by', '!=', 0 )->where('verified', true);
+
+        return view('accountant.finalize')->with('applications', $applications);
+    }
+
+    public function finalizeUpdate($id){
+        $application = Application::find($id);
+        $application->update([
+            'paid_for' => true
+        ]);
+
+        return redirect('/accountant_finalize_orders');
+    }
+
+    public function showMyApplications(){
+        $applications = Application::all()->where('seller_id', Auth::id());
+        $transportsTemp = Transport::all();
+        foreach ($transportsTemp as $transport){
+            foreach ($applications as $application){
+                if ($application->transport_id == $transport->id){
+                    $transports[] = $transport;
+                }
+            }
+        }
+
+        return view('application.show_my_applications')->with('applications', $applications)->with('transports', $transports);
+    }
+
+
 
 }

@@ -16,10 +16,17 @@
             </li>
             @if(auth()->user() != null)
             @if(auth()->user()->role =='user')
-            <li>
-                <a href="/application_create">Dodaj ofertę sprzedaży</a>
-            </li><li>
+                    <li>
+                    <a href="/application_create">Dodaj ofertę sprzedaży</a>
+                     </li>
+                    <li>
                         <a href="/show_applications">Zobacz oferty sprzedaży</a>
+                    </li>
+                    <li>
+                        <a href="/show_my_orders">Moje zamówienia</a>
+                    </li>
+                    <li>
+                        <a href="/my_applications">Wystawione oferty</a>
                     </li>
             @endif
             @endif
@@ -39,6 +46,17 @@
                     <li>
                         <a href="/show_carriers">Wyświetl przewoźników</a>
                     </li>
+                    <li>
+                        <a href="/transport_assign">Przypisz transport</a>
+                    </li>
+                @endif
+            @endif
+            @if(auth()->user() != null)
+                @if(auth()->user()->role == 'accountant')
+                    <li>
+                        <a href="/accountant_finalize_orders">Zatwiedź płatności</a>
+                    </li>
+
                 @endif
             @endif
 

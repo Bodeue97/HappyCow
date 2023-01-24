@@ -17,6 +17,8 @@ class Application extends Model
         'reserved',
         'paid_for',
         'reserved_by',
+        'account_number',
+        'seller_id'
 
 
     ];

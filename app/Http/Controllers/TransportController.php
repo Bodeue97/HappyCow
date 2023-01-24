@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Application;
 use App\Models\Carrier;
 use Illuminate\Http\Request;
 
@@ -36,6 +37,13 @@ class TransportController extends Controller
 
         Carrier::destroy($id);
         return redirect('/show_carriers');
+
+    }
+
+    public function assignTransport(){
+
+        $applications = Application::all()->where('paid_for', true);
+        return view('transport.assign')->with('applications', $applications);
 
     }
 
