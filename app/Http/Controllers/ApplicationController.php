@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Application;
 use App\Models\Transport;
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\User;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -98,6 +98,25 @@ class ApplicationController extends Controller
 
     public function finalizeOrders(){
         $applications = Application::all()->where('paid_for', false)->where('reserved_by', '!=', 0 )->where('verified', true);
+        $users = User::all();
+
+        foreach ($users as $usr){
+            $user = $usr;
+        }
+
+        $buyers[] = null;
+
+        foreach ($applications as $application  ){
+            foreach ($users as $user) {
+                if ($user->id == $application->seller_id) {
+                    $sellers = $user;
+                }
+            }
+        }
+        dd($sellers);
+
+
+
 
         return view('accountant.finalize')->with('applications', $applications);
     }

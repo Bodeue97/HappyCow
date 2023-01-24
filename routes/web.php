@@ -51,6 +51,8 @@ Route::delete('/carrier_delete/{id}', [\App\Http\Controllers\TransportController
 Route::get('/transport_assign', [\App\Http\Controllers\TransportController::class, 'showAssignTransport'])->middleware('transport');
 Route::put('/transport_assign/{id}', [\App\Http\Controllers\TransportController::class, 'assignTransport'])->middleware('transport');
 Route::post('/transport_assign',[\App\Http\Controllers\TransportController::class, 'storeTransport'] )->middleware('transport');
+Route::get('/finalize_transport', [\App\Http\Controllers\TransportController::class, 'finalizeTransport'])->middleware('transport');
+Route::put('/finalize_transport/{id}/{date}', [\App\Http\Controllers\TransportController::class, 'finalizeUpdate'])->middleware('tansport');
 
 
 

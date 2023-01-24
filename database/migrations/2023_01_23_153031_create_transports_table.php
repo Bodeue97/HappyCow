@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('pickup_date');
             $table->string('transport_to');
             $table->string('transport_from');
+            $table->date('delivered')->nullable();
             $table->unsignedBigInteger('carrier_id');
             $table->foreign('carrier_id')
                 ->references('id')

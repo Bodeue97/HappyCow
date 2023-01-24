@@ -13,6 +13,7 @@ class Transport extends Model
         'pickup_date',
         'transport_to',
         'transport_from',
+        'delivered',
         'carrier_id',
     ];
 }

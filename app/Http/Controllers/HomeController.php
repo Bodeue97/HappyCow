@@ -41,6 +41,7 @@ class HomeController extends Controller
             'email' => $request->input('email'),
             'password' => $password,
             'role' => 'user',
+            'address' =>$request->input('address')
         ]);
 
         auth()->login($user);

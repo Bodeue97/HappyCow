@@ -30,7 +30,7 @@
                 <h5>Email</h5>
                 <input  type="text" name="email">
                 <h5>Adres</h5>
-                <input  type="text" name="adres">
+                <input  type="text" name="address">
                 <h5>Hasło</h5>
                 <input type="password" name="password">
                 <h5>Potwierdź hasło</h5>

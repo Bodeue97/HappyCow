@@ -13,7 +13,7 @@
 
 @section('content')
 
-    <h1>Oferty sprzedaży</h1>
+    <h1>Moje zamówienia</h1>
     <table>
         <thead>
         @foreach($applications as $application)
@@ -24,7 +24,10 @@
             <th scope="col">Przedmiot oferty</th>
             <th scope="col">Cena</th>
             <th scope="col">Numer konta</th>
-            <th scope="col">Status</th>
+            <th scope="col">Opłacono</th>
+            <th scope="col">Data wysyłki</th>
+            <th scope="col">Stan</th>
+
 
         </tr>
         </thead>
@@ -36,10 +39,11 @@
 
                     <td>{{$application->cattle}}</td>
                     <td>{{$application->price}}</td>
+                    <td>{{$application->account_number}}</td>
                     @if($application->paid_for == true)
-                    <td>opłacono</td>
+                    <td>tak</td>
                     @else
-                        <td>nie opłacono</td>
+                        <td>nie</td>
                     @endif
                     @if($transport != null)
                     @if($application->transport_id != null & $application->transport_id == $transport->id)
@@ -50,7 +54,16 @@
                     @else
                         <td>Nie przydzielono transportu</td>
                     @endif
+                    @if( $transport != null)
+                        @if($application->transport_id == $transport->id)
+                            <td>{{$transport->delivered}}</td>
+                        @else
+                            <td>nie dostarczono</td>
+                        @endif
+                    @else
+                        <td>nie dostarczono</td>
 
+                    @endif
 
 
 

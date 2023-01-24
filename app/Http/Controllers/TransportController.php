@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Application;
 use App\Models\Carrier;
+use App\Models\Payment;
 use App\Models\Transport;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
@@ -82,6 +83,23 @@ class TransportController extends Controller
         ]);
 
         return redirect('/transport_assign');
+
+    }
+
+    public function finalizeTransport(){
+        $transports = Transport::all()->where('delivered', null);
+
+        return view('transport.finalize_transport')->with('transports', $transports);
+
+    }
+
+    public function finalizeUpdate($id, $date){
+        $transport = Transport::find($id);
+        $transport->update([
+            'delivered'=>$date
+        ]);
+
+        return redirect('/finalize_transport');
 
     }
 

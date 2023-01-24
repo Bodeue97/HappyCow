@@ -24,6 +24,7 @@
             <th scope="col">Zamówiono</th>
             <th scope="col">Opłacono</th>
             <th scope="col">Data odbioru</th>
+            <th scope="col">Stan</th>
 
         </tr>
         </thead>
@@ -61,6 +62,17 @@
                         <td>nie przypisano transportu</td>
 
                     @endif
+                    @if( $transport != null)
+                        @if($application->transport_id == $transport->id)
+                            <td>{{$transport->delivered}}</td>
+                        @else
+                            <td>nie dostarczono</td>
+                        @endif
+                    @else
+                        <td>nie dostarczono</td>
+
+                    @endif
+
 
 
 
