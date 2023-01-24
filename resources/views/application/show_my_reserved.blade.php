@@ -17,6 +17,7 @@
     <table>
         <thead>
         @foreach($applications as $application)
+            @foreach($transports as $transport)
         <tr>
 
 
@@ -40,11 +41,21 @@
                     @else
                         <td>nie opłacono</td>
                     @endif
+                    @if($transport != null)
+                    @if($application->transport_id != null & $application->transport_id == $transport->id)
+                        <td>Zamówienie zostanie wysłane {{$transport->pickup_date}}</td>
+                    @else
+                        <td>Nie przydzielono transportu</td>
+                    @endif
+                    @else
+                        <td>Nie przydzielono transportu</td>
+                    @endif
+
 
 
 
                 </tr>
-
+                @endforeach
         @endforeach
         </tbody>
 

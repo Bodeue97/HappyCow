@@ -51,10 +51,15 @@
                     @else
                         <td>nie</td>
                     @endif
+                    @if( $transport != null)
                     @if($application->transport_id == $transport->id)
                         <td>{{$transport->pickup_date}}</td>
                     @else
-                        <td>nie</td>
+                        <td>nie przypisano transportu</td>
+                    @endif
+                    @else
+                        <td>nie przypisano transportu</td>
+
                     @endif
 
 

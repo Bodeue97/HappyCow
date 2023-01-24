@@ -81,9 +81,18 @@ class ApplicationController extends Controller
     public function myReservedApplications(){
 
         $applications = Application::all()->where('reserved_by',Auth::id() );
+        $transportsTemp = Transport::all();
+        $transports[] = null;
+        foreach ($transportsTemp as $transport){
+            foreach ($applications as $application){
+                if ($application->transport_id == $transport->id){
+                    $transports[] = $transport;
+                }
+            }
+        }
 
 
-        return view('application.show_my_reserved')->with('applications', $applications);
+        return view('application.show_my_reserved')->with('applications', $applications)->with('transports', $transports);
     }
 
 
@@ -105,6 +114,7 @@ class ApplicationController extends Controller
     public function showMyApplications(){
         $applications = Application::all()->where('seller_id', Auth::id());
         $transportsTemp = Transport::all();
+        $transports[] = null;
         foreach ($transportsTemp as $transport){
             foreach ($applications as $application){
                 if ($application->transport_id == $transport->id){

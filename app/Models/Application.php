@@ -18,7 +18,8 @@ class Application extends Model
         'paid_for',
         'reserved_by',
         'account_number',
-        'seller_id'
+        'seller_id',
+        'transport_id',
 
 
     ];
