@@ -32,16 +32,17 @@
 
         <tbody>
         @foreach($applications as $application)
-            @foreach($users as $buyer)
-                @foreach($users as $seller)
+            @foreach($buyers as $buyer)
+                @foreach($sellers as $seller)
 
-                    @if(($application->seller_id == $seller )& ($application->reserved_by == $buyer))
+                    @if(($application->seller_id == $seller->id )& ($application->reserved_by == $buyer->id))
                 <tr>
 
                     <td>{{$application->cattle}}</td>
                     <td>{{$application->price}}</td>
                     <td>{{$application->account_number}}</td>
                     <td>{{$seller->name}} {{$seller->last_name}}</td>
+                    <td>{{$buyer->name}} {{$buyer->last_name}}</td>
                     <td>
                         <form method="post" action="/finalize_order/{{$application->id}}">
                             @csrf

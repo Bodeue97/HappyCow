@@ -100,25 +100,28 @@ class ApplicationController extends Controller
         $applications = Application::all()->where('paid_for', false)->where('reserved_by', '!=', 0 )->where('verified', true);
         $users = User::all();
 
-        foreach ($users as $usr){
-            $user = $usr;
-        }
 
-        $buyers[] = null;
+
 
         foreach ($applications as $application  ){
             foreach ($users as $user) {
                 if ($user->id == $application->seller_id) {
-                    $sellers = $user;
+                    $sellers []= $user;
                 }
             }
         }
-        dd($sellers);
+        foreach ($applications as $application  ){
+            foreach ($users as $user) {
+                if ($user->id == $application->reserved_by) {
+                    $buyers []= $user;
+                }
+            }
+        }
 
 
 
 
-        return view('accountant.finalize')->with('applications', $applications);
+        return view('accountant.finalize')->with('applications', $applications)->with('sellers', $sellers)->with('buyers', $buyers);
     }
 
     public function finalizeUpdate($id){
